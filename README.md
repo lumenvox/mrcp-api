@@ -1,4 +1,6 @@
-# MRCP API
+# LumenVox MRCP API
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This is the docker-compose file for the MRCP API/Media Server.
 
@@ -6,6 +8,7 @@ To start the API, navigate to the `docker` folder and run the following:
 ```shell
 docker-compose up -d
 ```
+
 To stop the API, navigate to the `docker` folder and run the following:
 ```shell
 docker-compose down
@@ -26,6 +29,7 @@ docker-compose down
 ## Certificates
 If a certificate is required to connect to the Speech API, place it in a `certs` folder under the `docker` folder and
 name it `server.crt`:
+
 ```text
 docker/
   docker-compose.yml
