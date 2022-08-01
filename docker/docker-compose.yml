@@ -26,3 +26,5 @@ services:
       - "25000-25500:25000-25500/udp"
     volumes:
       - ./certs:/certs
+    extra_hosts:
+      - "${MEDIA_SERVER__HOST_MAP:-placeholder:127.0.0.1}"
