@@ -22,6 +22,7 @@ docker-compose down
 | MEDIA_SERVER__SPEECH_API_ADDRESS        | Address of the Speech API to point to                         | speech-api.testmachine.com           |
 | MEDIA_SERVER__SPEECH_API_PORT           | Port of the Speech API to point to                            | 8080                                 |
 | MEDIA_SERVER__USE_TLS                   | Toggle to use TLS between the Media Server and the Speech API | false                                |
+| MEDIA_SERVER__HOST_MAP                  | Configure hosts file for unregistered domains                 | speech-api.testmachine.com:127.0.0.1 |
 
 ## Certificates
 If a certificate is required to connect to the Speech API, place it in a `certs` folder under the `docker` folder and
@@ -33,3 +34,13 @@ docker/
   certs/
     server.crt
 ```
+
+## Host Configuration
+If your Speech API domain is unregistered, you will need to configure hostname
+mapping in order for the MRCP API to connect to the Speech API. This can be
+controlled using the `MEDIA_SERVER__HOST_MAP` variable. The hostname should
+match the value of `MEDIA_SERVER__SPEECH_API_ADDRESS`, and the IP address
+should be that of your Speech API.
+
+If your Speech API domain is registered, no mapping is necessary: you can
+either set this value to empty or comment it out.
