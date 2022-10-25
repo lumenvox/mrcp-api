@@ -58,3 +58,30 @@ should be that of your Speech API.
 
 If your Speech API domain is registered, no mapping is necessary: you can
 either set this value to empty or comment it out.
+
+## Networking and Memory
+By default, Docker will spawn a proxy process for each port exposed by a
+container. For applications such as this which expose large numbers of ports,
+this can create issues with memory usage.
+
+There are multiple ways to get around this. In `docker-compose.yaml`, you
+will see the following line:
+```shell
+network_mode: host
+```
+This connects the MRCP API directly to the host network, removing the need
+for proxy processes, and resulting in far less memory usage.
+
+If you prefer not to have the container directly connected to the host
+network, there is another workaround. Add the following configuration to
+`/etc/docker/daemon.json`, and restart docker:
+```json
+{
+    "userland-proxy": false
+}
+```
+After making this change and before starting the container, comment out
+the `network_mode` line.
+
+Note that this solution will increase the startup time depending on how
+many ports are being exposed.

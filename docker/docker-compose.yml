@@ -30,3 +30,4 @@ services:
       - ./certs:/certs
     extra_hosts:
       - "${MEDIA_SERVER__HOST_MAP:-placeholder:127.0.0.1}"
+    network_mode: host
