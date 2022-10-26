@@ -85,3 +85,14 @@ the `network_mode` line.
 
 Note that this solution will increase the startup time depending on how
 many ports are being exposed.
+
+## Older Versions of Docker Compose
+Depending on the version of docker compose you are using, there may be
+issues with using the `network_mode: host` option in conjunction with
+the ports section being present. In this case, you will see something
+like the following:
+```shell
+ERROR: for cloud-media-server "host" network_mode is incompatible with port_bindings
+```
+In this case, you can comment out the ports section in `docker-compose.yaml`.
+This should resolve the issue.
