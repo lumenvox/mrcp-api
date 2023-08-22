@@ -49,6 +49,22 @@ docker/
     server.crt
 ```
 
+To specify an extra set of root CAs to trust when fetching grammars, concatenate
+the certificates in a file, `extra-root-cas.pem`:
+```text
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+```
+
+Base64-encode the file, and set `MEDIA_SERVER__EXTRA_ROOT_CA` to the result:
+```shell
+base64 extra-root-cas.pem -w 0
+```
+
 ## Host Configuration
 If your Lumenvox API domain is unregistered, you will need to configure hostname
 mapping in order for the MRCP API to connect to the Lumenvox API. This can be
