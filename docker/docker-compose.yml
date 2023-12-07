@@ -21,6 +21,9 @@ services:
       MEDIA_SERVER__LUMENVOX_API_PORT: "${MEDIA_SERVER__LUMENVOX_API_PORT}"
       MEDIA_SERVER__USE_TLS: "${MEDIA_SERVER__USE_TLS}"
       MEDIA_SERVER__EXTRA_ROOT_CA: "${MEDIA_SERVER__EXTRA_ROOT_CA}"
+      MEDIA_SERVER__LOGGING_LEVEL: "3"
+      CDR_FILE_MAX_MB: "5"
+      CDR_FILE_MAX_BACKUPS: "3"
     ports:
       - "554:554/tcp"
       - "5060-5061:5060-5061/tcp"
@@ -29,6 +32,7 @@ services:
       - "25000-25200:25000-25200/udp"
     volumes:
       - ./certs:/certs
+      - ./logs:/var/log/lumenvox/
     extra_hosts:
       - "${MEDIA_SERVER__HOST_MAP:-placeholder:127.0.0.1}"
     network_mode: host
