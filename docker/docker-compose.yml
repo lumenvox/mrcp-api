@@ -24,6 +24,7 @@ services:
       MEDIA_SERVER__LOGGING_LEVEL: "3"
       CDR_FILE_MAX_MB: "5"
       CDR_FILE_MAX_BACKUPS: "3"
+      TZ: "${CONTAINER_TIMEZONE}"
     ports:
       - "554:554/tcp"
       - "5060-5061:5060-5061/tcp"
