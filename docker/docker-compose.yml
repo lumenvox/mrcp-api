@@ -22,6 +22,13 @@ services:
       MEDIA_SERVER__USE_TLS: "${MEDIA_SERVER__USE_TLS}"
       MEDIA_SERVER__EXTRA_ROOT_CA: "${MEDIA_SERVER__EXTRA_ROOT_CA}"
       MEDIA_SERVER__LOGGING_LEVEL: "3"
+      MEDIA_SERVER__SAVE_WAVEFORM: "${MEDIA_SERVER__SAVE_WAVEFORM}"
+      MEDIA_SERVER__WAVEFORM_URL_PREFIX: "${MEDIA_SERVER__WAVEFORM_URL_PREFIX}"
+      MEDIA_SERVER__WAVEFORM_AUTO_CLEANUP: "${MEDIA_SERVER__WAVEFORM_AUTO_CLEANUP}"
+      MANAGEMENT_ADDRESS: "${MANAGEMENT_ADDRESS}"
+      MANAGEMENT_CERT_PEM_FILE: "${MANAGEMENT_CERT_PEM_FILE}"
+      MANAGEMENT_KEY_PEM_FILE: "${MANAGEMENT_KEY_PEM_FILE}"
+      MANAGEMENT_USERS: "${MANAGEMENT_USERS}"
       CDR_FILE_MAX_MB: "5"
       CDR_FILE_MAX_BACKUPS: "3"
       TZ: "${CONTAINER_TIMEZONE}"
@@ -34,6 +41,8 @@ services:
     volumes:
       - ./certs:/certs
       - ./logs:/var/log/lumenvox/
+      - ./waveforms:/var/lumenvox/waveforms
+      - ./management_certs:/var/lumenvox/certs
     extra_hosts:
       - "${MEDIA_SERVER__HOST_MAP:-placeholder:127.0.0.1}"
     network_mode: host
