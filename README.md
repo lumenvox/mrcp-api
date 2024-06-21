@@ -16,25 +16,13 @@ docker-compose down
 
 ## Environment
 
-| Parameter                               | Description                                                          | Default                                |
-|-----------------------------------------|----------------------------------------------------------------------|----------------------------------------|
-| MEDIA_SERVER__ALLOW_DEPLOYMENT_OVERRIDE | Allow overrides of the deployment ID                                 | false                                  |
-| MEDIA_SERVER__ALLOW_OPERATOR_OVERRIDE   | Allow overrides of the operator ID                                   | false                                  |
-| MEDIA_SERVER__DEFAULT_DEPLOYMENT_ID     | Default deployment ID                                                | enter-your-specific-deployment-id      |
-| MEDIA_SERVER__DEFAULT_OPERATOR_ID       | Default operator ID                                                  | 00000000-0000-0000-0000-000000000000   |
-| MEDIA_SERVER__NUM_CHANNELS              | Number of channels to expose                                         | 200                                    |
-| MEDIA_SERVER__SERVER_IP                 | Address of hosting machine                                           | 127.0.0.1                              |
-| MEDIA_SERVER__LUMENVOX_API_ADDRESS      | Address of the Lumenvox API to point to                              | lumenvox-api.testmachine.com           |
-| MEDIA_SERVER__LUMENVOX_API_PORT         | Port of the Lumenvox API to point to                                 | 443                                    |
-| MEDIA_SERVER__USE_TLS                   | Toggle to use TLS between the Media Server and the Lumenvox API.     | true                                   |
-| MEDIA_SERVER__HOST_MAP                  | Configure hosts file for unregistered domains                        | lumenvox-api.testmachine.com:127.0.0.1 |
-| MEDIA_SERVER__SAVE_WAVEFORM             | Activate the save-waveform functionality                             | false                                  |
-| MEDIA_SERVER__WAVEFORM_URL_PREFIX       | URL prefix for saved waveforms, i.e. "https://test.com/"             | ""                                     |
-| MEDIA_SERVER__WAVEFORM_AUTO_CLEANUP     | If true, delete saved waveforms at the end of the session.           | true                                   |
-| MANAGEMENT_ADDRESS                      | Management API listening address and port.                           | :8085                                  |
-| MANAGEMENT_CERT_PEM_FILE                | Path to certificate PEM file. Leave empty to auto-generate.          | ""                                     |
-| MANAGEMENT_KEY_PEM_FILE                 | Path to key PEM file. Leave empty to auto-generate.                  | ""                                     |
-| MANAGEMENT_USERS                        | Credentials for basic authentication. Leave empty to auto-generate.  | ""                                     |
+| Parameter                           | Description                  | Default                           |
+|-------------------------------------|------------------------------|-----------------------------------|
+| MEDIA_SERVER__DEFAULT_DEPLOYMENT_ID | Default deployment ID        | enter-your-specific-deployment-id |
+| MEDIA_SERVER__NUM_CHANNELS          | Number of channels to expose | 200                               |
+| MEDIA_SERVER__SERVER_IP             | Address of hosting machine   | 127.0.0.1                         |
+| MEDIA_SERVER__LUMENVOX_API_ADDRESS  | Address of the Lumenvox API  | lumenvox-api.testmachine.com      |
+| MEDIA_SERVER__LUMENVOX_API_PORT     | Port of the Lumenvox API     | 443                               |
 
 ## Required Configuration
 * For requests to the Lumenvox API to succeed, you must set `MEDIA_SERVER__DEFAULT_DEPLOYMENT_ID` to your deployment ID.
@@ -44,7 +32,11 @@ docker-compose down
 * For routing between the MRCP API and Lumenvox API, you must set `MEDIA_SERVER__LUMENVOX_API_ADDRESS` to the hostname specified in the container stack.
   * If you haven't set up your DNS to manage the specified hostname, you must configure `MEDIA_SERVER__HOST_MAP`.
 
+## Optional Configuration
+For a full list of optional settings, see OPTIONAL.md in this directory.
+
 ## Certificates
+### Lumenvox API
 If a certificate is required to connect to the Lumenvox API, place it in a `certs` folder under the `docker` folder and
 name it `server.crt`:
 
@@ -56,6 +48,7 @@ docker/
     server.crt
 ```
 
+### Grammar Fetches
 To specify an extra set of root CAs to trust when fetching grammars, concatenate
 the certificates in a file, `extra-root-cas.pem`:
 ```text
