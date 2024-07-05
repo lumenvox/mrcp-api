@@ -16,16 +16,17 @@ docker-compose down
 
 ## Environment
 
-| Parameter                           | Description                  | Default                           |
-|-------------------------------------|------------------------------|-----------------------------------|
-| MEDIA_SERVER__DEFAULT_DEPLOYMENT_ID | Default deployment ID        | enter-your-specific-deployment-id |
-| MEDIA_SERVER__NUM_CHANNELS          | Number of channels to expose | 200                               |
-| MEDIA_SERVER__SERVER_IP             | Address of hosting machine   | 127.0.0.1                         |
-| MEDIA_SERVER__LUMENVOX_API_ADDRESS  | Address of the Lumenvox API  | lumenvox-api.testmachine.com      |
-| MEDIA_SERVER__LUMENVOX_API_PORT     | Port of the Lumenvox API     | 443                               |
+| Parameter                          | Description                                    | Default                              |
+|------------------------------------|------------------------------------------------|--------------------------------------|
+| MEDIA_SERVER__DEPLOYMENT_ID        | Default deployment ID                          | 00000000-0000-0000-0000-000000000000 |
+| MEDIA_SERVER__NUM_CHANNELS         | Number of channels to expose                   | 200                                  |
+| MEDIA_SERVER__SERVER_IP            | Address of hosting machine                     | 127.0.0.1                            |
+| MEDIA_SERVER__LUMENVOX_API_ADDRESS | Address of the Lumenvox API                    | lumenvox-api.testmachine.com         |
+| MEDIA_SERVER__LUMENVOX_API_PORT    | Port of the Lumenvox API                       | 443                                  |
+| MEDIA_SERVER__LOGGING_LEVEL        | Verbosity levels: 1=errors, 2=info, or 3=debug | 1                                    |
 
 ## Required Configuration
-* For requests to the Lumenvox API to succeed, you must set `MEDIA_SERVER__DEFAULT_DEPLOYMENT_ID` to your deployment ID.
+* For requests to the Lumenvox API to succeed, you must set `MEDIA_SERVER__DEPLOYMENT_ID` to your deployment ID.
 * `MEDIA_SERVER__NUM_CHANNELS` should correspond to the number of ports exposed in the two ranges.
   * Using the defaults, this should be 200.
 * For routing between the client and MRCP API, you must set `MEDIA_SERVER__SERVER_IP` to the MRCP API host machine IP.
@@ -33,7 +34,8 @@ docker-compose down
   * If you haven't set up your DNS to manage the specified hostname, you must configure `MEDIA_SERVER__HOST_MAP`.
 
 ## Optional Configuration
-For a full list of optional settings, see OPTIONAL.md in this directory.
+For a full list of optional settings, see OPTIONAL.md in this directory. These settings can be applied directly to the
+docker-compose.yaml file, or they can be applied via the .env file.
 
 ## Certificates
 ### Lumenvox API

@@ -1,10 +1,5 @@
 # Optional Environment Variables
 
-### MEDIA_SERVER__ALLOW_DEPLOYMENT_OVERRIDE
-
-Allow overrides of the deployment ID
-
-Default Value: false
 
 ### MEDIA_SERVER__ALLOW_OPERATOR_OVERRIDE
 
@@ -53,6 +48,12 @@ Default Value: true
 Compatibility mode for certain media server operations.
 
 Default Value: 0
+
+### MEDIA_SERVER__SSL_VERIFY_PEER
+
+Set to false to disable ssl verify peer.
+
+Default Value: true
 
 ### MEDIA_SERVER__SECURE_CONTEXT
 
