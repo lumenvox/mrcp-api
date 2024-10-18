@@ -6,12 +6,12 @@ This is the docker-compose file for the MRCP API/Media Server.
 
 To start the API, navigate to the `docker` folder and run the following:
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 To stop the API, navigate to the `docker` folder and run the following:
 ```shell
-docker-compose down
+docker compose down
 ```
 
 ## Environment
