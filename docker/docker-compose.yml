@@ -34,3 +34,8 @@ services:
     extra_hosts:
       - "${MEDIA_SERVER__HOST_MAP:-placeholder:127.0.0.1}"
     network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
