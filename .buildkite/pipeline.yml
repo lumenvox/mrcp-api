@@ -1,0 +1,21 @@
+steps:
+  - label: ':docker: Build enhanced MRCP API image'
+    timeout_in_minutes: 30
+    notify:
+      - github_commit_status:
+          context: 'image-ready'
+    agents:
+      queue: buildkit-daemonless
+      buildkit: true
+      daemonless: true
+    command: |
+      buildctl-daemonless build --output type=image,\"name=invocaops/mrcp-api:$BUILDKITE_COMMIT,invocaops/mrcp-api:\$BUILDKITE_BRANCH_DOCKER_SAFE\",push=true \
+                                --progress plain \
+                                --frontend dockerfile.v0 \
+                                --local context=. \
+                                --local dockerfile=. \
+                                --opt filename=Dockerfile \
+                                --export-cache type=registry,ref=docker.io/invocaops/mrcp-api:\$BUILDKITE_BRANCH_DOCKER_SAFE-cache \
+                                --import-cache type=registry,ref=docker.io/invocaops/mrcp-api:\$BUILDKITE_BRANCH_DOCKER_SAFE-cache \
+                                --import-cache type=registry,ref=docker.io/invocaops/mrcp-api:master-cache \
+                                --ssh default \
