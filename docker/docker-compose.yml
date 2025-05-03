@@ -31,6 +31,7 @@ services:
       - ./logs:/var/log/lumenvox/
       - ./waveforms:/var/lumenvox/waveforms
       - ./management_certs:/var/lumenvox/certs
+      - ./credentials/credentials.ini:/credentials/credentials.ini
     extra_hosts:
       - "${MEDIA_SERVER__HOST_MAP:-placeholder:127.0.0.1}"
     network_mode: host

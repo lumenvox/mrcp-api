@@ -1,5 +1,56 @@
 # Optional Environment Variables
 
+## OAuth
+
+### MEDIA_SERVER__OAUTH_ENABLED
+
+If set to "1", enables OAuth for the connection to the Lumenvox API
+
+Default Value:  ""
+
+### MEDIA_SERVER__USERNAME
+
+Allows setting of OAuth username via the environment. Overrides any
+usernames found in `credentials.ini`.
+
+Default Value:  ""
+
+### MEDIA_SERVER__PASSWORD
+
+Allows setting of OAuth password via the environment. Overrides any
+passwords found in `credentials.ini`.
+
+Default Value:  ""
+
+### MEDIA_SERVER__CLIENT_ID
+
+Allows setting of OAuth client ID via the environment. Overrides any
+IDs found in `credentials.ini`.
+
+Default Value:  ""
+
+### MEDIA_SERVER__SECRET_HASH
+
+Allows setting of OAuth secret hash via the environment. Overrides any
+hashes found in `credentials.ini`.
+
+Default Value:  ""
+
+### MEDIA_SERVER__AUTH_HEADERS
+
+Allows setting of OAuth headers via the environment. Overrides any
+headers found in `credentials.ini`.
+
+Default Value:  "Content-Type=application/x-amz-json-1.1,X-Amz-Target=AWSCognitoIdentityProviderService.InitiateAuth"
+
+### MEDIA_SERVER__AUTH_URL
+
+Allows setting of OAuth URL via the environment. Overrides any
+URLs found in `credentials.ini`.
+
+Default Value:  ""
+
+## Miscellaneous
 
 ### MEDIA_SERVER__ALLOW_OPERATOR_OVERRIDE
 
@@ -158,7 +209,7 @@ Default Value: 20000
 
 ### MEDIA_SERVER__SIPS_SSL_CERT_FILE
 
-Specifies full path to SSL certificate (*.pem) file to use in SIPS. By default a dummy certificate will be used.
+Specifies full path to SSL certificate (*.pem) file to use in SIPS. By default, a dummy certificate will be used.
 
 Default Value: ""
 
@@ -200,8 +251,8 @@ Default Value: 100
 
 ### MEDIA_SERVER__BARGE_IN_THRESHOLD
 
-Specifies how sure the VAD needs to be that the frame of data is speech before bargein. The higher the value, the more
-sure we need to be that the frame is speech before bargein.
+Specifies how sure the VAD needs to be that the frame of data is speech before barge-in. The higher the value, the more
+sure we need to be that the frame is speech before barge-in.
 
 Default Value: 50
 
@@ -258,7 +309,7 @@ Possible Values: 0 = Disabled<br> 1 = Enabled
 
 ### MEDIA_SERVER__MRCP_TLS_CERT_FILE
 
-Specifies full path to SSL certificate (*.pem) file to use in MRCPv2/TLS. By default a dummy certificate will be used.
+Specifies full path to SSL certificate (*.pem) file to use in MRCPv2/TLS. By default, a dummy certificate will be used.
 If specified, this should be the full path to a certificate (*.pem) file that should be used.
 
 Default Value: ""

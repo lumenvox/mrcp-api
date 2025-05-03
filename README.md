@@ -6,12 +6,12 @@ This is the docker-compose file for the MRCP API/Media Server.
 
 To start the API, navigate to the `docker` folder and run the following:
 ```shell
-docker compose up -d
+docker-compose up -d
 ```
 
 To stop the API, navigate to the `docker` folder and run the following:
 ```shell
-docker compose down
+docker-compose down
 ```
 
 ## Environment
@@ -76,6 +76,35 @@ should be that of your Lumenvox API.
 
 If your Lumenvox API domain is registered, no mapping is necessary: you can
 either set this value to empty or comment it out.
+
+## OAuth Support
+If the Lumenvox API you are connecting to is protected by OAuth, you'll
+need to configure the MRCP API to use OAuth. To enable OAuth, set
+`MEDIA_SERVER__OAUTH_ENABLED` to `1`.
+
+If OAuth is enabled, the MRCP API will expect all the relevant
+credentials. These are typically provided via an INI file which looks
+like this:
+```ini
+USERNAME = ""
+PASSWORD = ""
+CLIENT_ID = ""
+SECRET_HASH = ""
+AUTH_HEADERS = ""
+AUTH_URL = ""
+```
+
+An example INI without any credentials has been provided in this
+repository. The MRCP API expects this file at a fixed location, so the
+name should not be changed. However, you may relocate the file so long
+as you update the volume mapping appropriately.
+
+Of the fields above, only "AUTH_HEADERS" may be left blank, in which
+case the MRCP API will default to using headers for AWS Cognito.
+
+Each of these fields can also be set via the environment. Simply prepend
+`MEDIA_SERVER__` to the name of the field. For example,
+`MEDIA_SERVER__USERNAME`, `MEDIA_SERVER__CLIENT_ID`, etc.
 
 ## Save-Waveform
 
