@@ -52,6 +52,12 @@ Default Value:  ""
 
 ## Miscellaneous
 
+### MEDIA_SERVER__ENABLE_TTS_PARTIAL_STREAMING
+
+Enables TTS streaming based on partial results when set to 1. Significantly reduces the time to first byte for TTS.
+
+Default Value: 0
+
 ### MEDIA_SERVER__ALLOW_OPERATOR_OVERRIDE
 
 Allow overrides of the operator ID
