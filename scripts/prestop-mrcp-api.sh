@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-### set bash operating arguments
-set -e -o pipefail;
-
 ### load common functions
 source /root/prestop-common-functions.sh;
 
